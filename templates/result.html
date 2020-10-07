@@ -1,0 +1,47 @@
+<html>
+    <body>
+		<header class="sticky-top">
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow-sm">
+				<a class="navbar-brand" href="/">Busca Mural Eleitoral</a>
+		
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+																												aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+		</nav>
+		</header>
+	</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+                                                                                                           crossorigin="anonymous">
+    <link href="/static/styles.css" rel="stylesheet">
+    <b><a>Exibindo resultados para {{name}} no {{court}}</a></b>
+    <div class="results">
+        {% block list %}
+            {% for lawsuit in lawsuit_list %}
+            <div class="container">
+                <div class="p-5 card shadow-sm mt-5">
+            <b><a>Data de Publicação: {{lawsuit['dataPublicacao']}}</a></b>
+            <br>
+            <b><a>Número da Publicação: {{lawsuit['numeroPublicacao']}}</a></b>
+            <br>
+            <b><a>Número Único: {{lawsuit['decisao']['numeroUnico']}}</a></b>
+            <br>
+            <b><a>Município: {{lawsuit['decisao']['municipio']['nome']}}</a></b>
+            <br>
+            <b><a>Partes:</a></b>
+            {% for part in lawsuit['decisao']['partes'] %}
+                    <b><a>{{part['nome']}}</a></b>
+            {%endfor%}
+            <br>
+            <b><a>Conteúdo: {{lawsuit['url']}}</a></b>
+            <br>
+                </div>
+            </div>
+            {%endfor%}
+        {% endblock %}
+    </div>
+</html>
