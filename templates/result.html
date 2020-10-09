@@ -18,7 +18,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
                                                                                                            crossorigin="anonymous">
     <link href="/static/styles.css" rel="stylesheet">
-    <b><a>Exibindo resultados para {{name}} no {{court}}</a></b>
+    <b><a style="padding-left: 10px;">Exibindo resultados para {{name}} no {{court}}</a></b>
+    <br>
+    <form style="padding-left: 10px;" method="GET" action='/'>
+    <button type='submit'>Nova Busca</button></form> 
     <div class="results">
         {% block list %}
             {% for lawsuit in lawsuit_list %}
@@ -37,7 +40,7 @@
                     <b><a>{{part['nome']}}</a></b>
             {%endfor%}
             <br>
-            <b><a>Conteúdo: {{lawsuit['url']}}</a></b>
+            <b><a href="{{lawsuit['url']}}" target="_blank">Ver conteúdo</a></b>
             <br>
                 </div>
             </div>
