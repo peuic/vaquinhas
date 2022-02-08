@@ -28,7 +28,7 @@ def search_candidate(name, court):
         'Origin': 'https://mural-consulta.tse.jus.br',
         'Referer': 'https://mural-consulta.tse.jus.br/',
     }
-    import pdb; pdb.set_trace()
+
     response = requests.post(url, headers=headers, data=data)
 
     lawsuit_list =  response.json()
