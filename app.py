@@ -31,11 +31,13 @@ def search_candidate(name, court):
 
     response = requests.post(url, headers=headers, data=data)
 
-    lawsuit_list =  response.json()
-    for lawsuit in lawsuit_list['collection']:
-        lawsuit['url'] = get_publication_url(lawsuit['id'])
+    if response.status_code == 200:
+        lawsuit_list =  response.json()
+        for lawsuit in lawsuit_list['collection']:
+            lawsuit['url'] = get_publication_url(lawsuit['id'])
 
-    return lawsuit_list['collection']
+        return lawsuit_list['collection']
+    return []
 
 
 def get_publication_url(_id):
