@@ -1,40 +1,39 @@
 <html>
-    <body>
-        <header class="sticky-top">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow-sm">
-            <a class="navbar-brand" href="/">Busca Mural Eleitoral</a>
-    
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-                                                                                                            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-        </header>
-    </body>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity=""
-                                                                                                           crossorigin="anonymous">
     <link href="/static/styles.css" rel="stylesheet">
-    <div class="container">
-        <div class="container">
-            <div class="p-5 card shadow-sm mt-5">
-                <head>
-                    <title>Busca Mural Eleitoral</title>
-                </head>
-                <h2 class="row justify-content-center">Busca Mural Eleitoral</h2>
-                <body>
-                    <form method="POST" action="/result">
-                        <b>Digite o nome do candidato:</b> <input type="text" name="name">
-                        <br>
-                        <b>Digite o tribunal (EX: "TRE-BA"):</b> <input type="text" name="court">
-                        <br>
-                    <input type="submit">
-                    </form>
-                </body>
-            </div>
+    <title>Busca Mural Eleitoral</title>
+</head>
+
+<body class="start-page">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow-sm sticky-top">
+        <a class="navbar-brand" href="/">Busca Mural Eleitoral</a>
+
+    </nav>
+
+    <main class="container container-center">
+        <div class="p-5 card shadow-sm mt-5">
+
+            <h2 class="row justify-content-center">Busca Mural Eleitoral</h2>
+
+            <section>
+                <form method="POST" action="/result">
+                    <div class="form-group">
+                    <label>Digite o nome do candidato:</label> <input type="text" name="name">
+                    </div>
+                    <div class="form-group">
+
+                    <label>Digite o tribunal (EX: "TRE-BA"):</label> <input type="text" name="court">
+                    </div>
+                    <button type="submit" class="send-button">Enviar</button>
+                </form>
+
+            </section>
         </div>
-    </div>
+    </main>
+    <img src="/static/logo.png" class="img-fluid logo-tse" alt="Responsive image">
+</body>
+
 </html>
