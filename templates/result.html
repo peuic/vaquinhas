@@ -1,50 +1,71 @@
 <html>
-    <body>
-		<header class="sticky-top">
-		<nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow-sm">
-				<a class="navbar-brand" href="/">Busca Mural Eleitoral</a>
-		
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-																												aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-				</button>
-		</nav>
-		</header>
-	</body>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-                                                                                                           crossorigin="anonymous">
     <link href="/static/styles.css" rel="stylesheet">
-    <b><a style="padding-left: 10px;">Exibindo resultados para {{name}} no {{court}}</a></b>
-    <br>
-    <form style="padding-left: 10px;" method="GET" action='/'>
-    <button type='submit'>Nova Busca</button></form> 
-    <div class="results">
-        {% block list %}
+    <title>Busca Mural Eleitoral</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow-sm sticky-top">
+        <a class="navbar-brand" href="/">Busca Mural Eleitoral</a>
+
+    </nav>
+
+    <main class="container">
+        <div class="result-top">
+            <div class="alert"><a style="padding-left: 10px;">Exibindo resultados para {{name}} no {{court}}</a></div>
+            <form style="padding-left: 10px;" method="GET" action='/'>
+                <button type='submit' class="send-button">Nova Busca</button>
+            </form>
+        </div>
+
+
+
+
+        <div class="results">
+            {% block list %}
             {% for lawsuit in lawsuit_list %}
-            <div class="container">
-                <div class="p-5 card shadow-sm mt-5">
-            <b><a>Data de Publicação: {{lawsuit['dataPublicacao']}}</a></b>
-            <br>
-            <b><a>Número da Publicação: {{lawsuit['numeroPublicacao']}}</a></b>
-            <br>
-            <b><a>Número Único: {{lawsuit['decisao']['numeroUnico']}}</a></b>
-            <br>
-            <b><a>Município: {{lawsuit['decisao']['municipio']['nome']}}</a></b>
-            <br>
-            <b><a>Partes:</a></b>
-            {% for part in lawsuit['decisao']['partes'] %}
-                    <b><a>{{part['nome']}}</a></b>
-            {%endfor%}
-            <br>
-            <b><a href="{{lawsuit['url']}}" target="_blank">Ver conteúdo</a></b>
-            <br>
+
+            <div class="card result-card">
+                <div class="dados">
+                    <div class="field data">
+                        <div class="label">Data da Publicação:</div>
+                        <div class="value">{{lawsuit['dataPublicacao']}}</div>
+                    </div>
+                    <div class="field numero">
+                        <div class="label">Número da Publicação:</div>
+                        <div class="value">{{lawsuit['numeroPublicacao']}}</div>
+                    </div>
+                    <div class="field numero">
+                        <div class="label">Número Único:</div>
+                        <div class="value">{{lawsuit['decisao']['numeroUnico']}}</div>
+                    </div>
+                    <div class="field municipio">
+                        <div class="label">Município:</div>
+                        <div class="value">{{lawsuit['decisao']['municipio']['nome']}}</div>
+                    </div>
+                    <div class="field partes">
+                        <div class="label">Partes:</div>
+                        <div class="value">
+                            {% for part in lawsuit['decisao']['partes'] %}
+                            <span>{{part['nome']}}</span>
+                            {%endfor%}
+                        </div>
+                    </div>
+                </div>
+                <div class="spacer"></div>
+                <div class="acesso">
+                    <a href="{{lawsuit['url']}}" target="_blank" class="send-button">Ver conteúdo</a>
                 </div>
             </div>
             {%endfor%}
-        {% endblock %}
-    </div>
+            {% endblock %}
+        </div>
+    </main>
+
+</body>
+
+
 </html>
