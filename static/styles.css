@@ -129,6 +129,10 @@ input {
 }
 .results{
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 1rem;
+}
+@media screen and (mIN-width: 768px) {
+  .results{
+     grid-template-columns: 1fr 1fr;
+  }
 }
