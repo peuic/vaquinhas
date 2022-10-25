@@ -8,7 +8,7 @@ You can access it [here](https://buscamural.herokuapp.com/) and search for the c
 *Example:*
 
 
-<img width="698" alt="image" src="https://user-images.githubusercontent.com/26730826/190712968-990924d5-7abe-47e9-b867-dc19947d98b5.png">
+<img width="525" alt="image" src="https://user-images.githubusercontent.com/26730826/197888153-27cc9ece-ea9e-4439-8038-de0a60551b71.png">
 
 
 You're more than welcome to collaborate :)
